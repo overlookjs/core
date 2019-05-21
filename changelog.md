@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.2.3
+
+Minor changes:
+
+* `.extend` extension identifier symbol optional
+* `.extend` type-check extension identifier symbol
+* Correct JSDoc comments for `.extend`
+
+Refactor:
+
+* Rename variables in `.extend`
+
 ## 0.2.2
 
 Features:

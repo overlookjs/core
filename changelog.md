@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.2
+
+Features:
+
+* Route class `extend` static method
+
 ## 0.2.1
 
 Dev:

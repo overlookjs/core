@@ -15,3 +15,8 @@ process.on('unhandledRejection', (err, promise) => {
 	if (promise._name) ctr += ` ${promise._name}`;
 	throw new Error(`Unhandled rejection: ${(err || {}).message} (${ctr})`);
 });
+
+// Exports
+module.exports = {
+	spy: jest.fn
+};

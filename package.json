@@ -1,6 +1,6 @@
 {
   "name": "@overlook/core",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "Overlook framework core",
   "main": "index.js",
   "author": {

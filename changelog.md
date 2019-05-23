@@ -1,5 +1,34 @@
 # Changelog
 
+## 0.2.4
+
+Features:
+
+* Child ordering
+
+Bug fixes:
+
+* `extend` handle mutliple functions
+* `.extend` use only specific cache
+* Overlook constructor creates undefined `.router` prop
+
+Refactor:
+
+* Move attach methods into separate file
+
+Tests:
+
+* Tests for all features
+
+Dev:
+
+* Add `package-lock.json`
+* Travis CI cache npm modules
+
+Misc:
+
+* Code comments
+
 ## 0.2.3
 
 Minor changes:

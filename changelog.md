@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.5
+
+Dev:
+
+* Update version in `package-lock.json` [fix]
+
 ## 0.2.4
 
 Features:

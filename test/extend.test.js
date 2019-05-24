@@ -132,6 +132,12 @@ describe('Route.extend()', () => { // eslint-disable-line jest/lowercase-name
 			const route = new R2();
 			expect(route[identifier]).toBe(true);
 		});
+
+		it('created and saved on extension if not present', () => {
+			const fn = R => class extends R {};
+			Route.extend(fn);
+			expect(typeof fn.identifier).toBe('symbol');
+		});
 	});
 
 	describe('duplicate extensions ignored when', () => {

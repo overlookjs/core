@@ -10,7 +10,7 @@
 const {Route} = require('../index');
 
 // Init
-require('./utils');
+require('./support');
 
 const spy = jest.fn;
 

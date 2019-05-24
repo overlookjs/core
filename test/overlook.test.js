@@ -11,7 +11,7 @@ const Overlook = require('../index'),
 	{Route} = Overlook;
 
 // Init
-require('./utils');
+require('./support');
 
 const spy = jest.fn;
 

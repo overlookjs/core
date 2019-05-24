@@ -1,5 +1,26 @@
 # Changelog
 
+## 0.3.0
+
+Breaking changes:
+
+* Rename identifier symbol property to `.identifier`
+* Create identifier symbol for extensions without one
+
+Refactor:
+
+* `.extend` move validation of extension arg
+
+Tests:
+
+* Rename `utils` to `support` [refactor]
+* Move `spy` out of test utils [refactor]
+* Tests for constructor props
+
+Dev:
+
+* `package-lock.json` optional properties
+
 ## 0.2.5
 
 Dev:

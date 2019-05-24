@@ -115,30 +115,30 @@ describe('Route.extend()', () => { // eslint-disable-line jest/lowercase-name
 		});
 	});
 
-	describe('identity symbol', () => {
+	describe('identifier symbol', () => {
 		it('set on class', () => {
 			const fn = R => class extends R {};
-			const symbol = Symbol('test');
-			fn.symbol = symbol;
+			const identifier = Symbol('test');
+			fn.identifier = identifier;
 			const R2 = Route.extend(fn);
-			expect(R2[symbol]).toBe(true);
+			expect(R2[identifier]).toBe(true);
 		});
 
 		it('set on prototype', () => {
 			const fn = R => class extends R {};
-			const symbol = Symbol('test');
-			fn.symbol = symbol;
+			const identifier = Symbol('test');
+			fn.identifier = identifier;
 			const R2 = Route.extend(fn);
 			const route = new R2();
-			expect(route[symbol]).toBe(true);
+			expect(route[identifier]).toBe(true);
 		});
 	});
 
 	describe('duplicate extensions ignored when', () => {
 		it('straight after each other', () => {
 			const fn = R => class extends R {};
-			const symbol = Symbol('test');
-			fn.symbol = symbol;
+			const identifier = Symbol('test');
+			fn.identifier = identifier;
 			const R2 = Route.extend(fn);
 			const R3 = R2.extend(fn);
 			expect(R3).toBe(R2);
@@ -146,11 +146,11 @@ describe('Route.extend()', () => { // eslint-disable-line jest/lowercase-name
 
 		it('with intermediate different extension', () => {
 			const fn = R => class extends R {};
-			const symbol = Symbol('test');
-			fn.symbol = symbol;
+			const identifier = Symbol('test');
+			fn.identifier = identifier;
 			const fn2 = R => class extends R {};
-			const symbol2 = Symbol('test2');
-			fn2.symbol = symbol2;
+			const identifier2 = Symbol('test2');
+			fn2.identifier = identifier2;
 
 			const R2 = Route.extend(fn);
 			const R3 = R2.extend(fn2);

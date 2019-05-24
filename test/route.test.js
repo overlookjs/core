@@ -24,31 +24,46 @@ describe('Route class', () => { // eslint-disable-line jest/lowercase-name
 	});
 
 	describe('constructor', () => {
-		let route;
-		beforeEach(() => {
-			route = new Route();
-		});
-
 		it('initializes undefined parent', () => {
+			const route = new Route();
 			expect(route).toHaveProperty('parent');
 			expect(route.parent).toBeUndefined();
 		});
 
 		it('initializes empty children array', () => {
+			const route = new Route();
 			expect(route.children).toBeArrayOfSize(0);
 		});
 
 		it('initializes undefined app', () => {
+			const route = new Route();
 			expect(route).toHaveProperty('app');
 			expect(route.app).toBeUndefined();
 		});
 
-		it('calls `.initProps()`', () => {
-			class R2 extends Route {}
-			const fn = spy();
-			R2.prototype.initProps = fn;
-			new R2(); // eslint-disable-line no-new
-			expect(fn).toHaveBeenCalledTimes(1);
+		describe('calls `.initProps()`', () => {
+			let fn, props;
+			beforeEach(() => {
+				class R2 extends Route {}
+				props = {};
+				fn = spy(() => props);
+				R2.prototype.initProps = fn;
+				new R2(props); // eslint-disable-line no-new
+			});
+
+			it('once', () => {
+				expect(fn).toHaveBeenCalledTimes(1);
+			});
+
+			it('with props', () => {
+				expect(fn).toHaveBeenCalledWith(props);
+			});
+		});
+
+		it('adds passed properties to route', () => {
+			const props = {a: {}};
+			const route = new Route(props);
+			expect(route.a).toBe(props.a);
 		});
 	});
 

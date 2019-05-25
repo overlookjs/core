@@ -50,21 +50,12 @@ describe('Overlook class', () => { // eslint-disable-line jest/lowercase-name
 			expect(overlook.router).toBe(router);
 		});
 
-		describe('calls `.attachedTo` on router', () => {
-			let router;
-			beforeEach(() => {
-				router = new Route();
-				router.attachedTo = spy();
-				overlook.attachRouter(router);
-			});
-
-			it('once', () => {
-				expect(router.attachedTo).toHaveBeenCalledTimes(1);
-			});
-
-			it('with null', () => {
-				expect(router.attachedTo).toHaveBeenCalledWith(null);
-			});
+		it('calls `.attachedTo` on router with null', () => {
+			const router = new Route();
+			router.attachedTo = spy();
+			overlook.attachRouter(router);
+			expect(router.attachedTo).toHaveBeenCalledTimes(1);
+			expect(router.attachedTo).toHaveBeenCalledWith(null);
 		});
 	});
 
@@ -78,23 +69,15 @@ describe('Overlook class', () => { // eslint-disable-line jest/lowercase-name
 			expect(ret).toBe(overlook);
 		});
 
-		describe('calls `.init` on router', () => {
-			let router;
-			beforeEach(() => {
-				router = new Route();
-				router.init = spy();
-				overlook.attachRouter(router);
-				expect(router.init).not.toHaveBeenCalled();
-				overlook.init();
-			});
+		it('calls `.init` on router with overlook app', () => {
+			const router = new Route();
+			router.init = spy();
+			overlook.attachRouter(router);
+			expect(router.init).not.toHaveBeenCalled();
 
-			it('once', () => {
-				expect(router.init).toHaveBeenCalledTimes(1);
-			});
-
-			it('with overlook app', () => {
-				expect(router.init).toHaveBeenCalledWith(overlook);
-			});
+			overlook.init();
+			expect(router.init).toHaveBeenCalledTimes(1);
+			expect(router.init).toHaveBeenCalledWith(overlook);
 		});
 	});
 

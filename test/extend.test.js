@@ -22,43 +22,28 @@ describe('Route.extend()', () => { // eslint-disable-line jest/lowercase-name
 	});
 
 	describe('calls', () => {
-		describe('extension function', () => {
-			it('once', () => {
-				const fn = spy(R => R);
-				Route.extend(fn);
-				expect(fn).toHaveBeenCalledTimes(1);
-			});
-
-			it('with Route', () => {
-				const fn = spy(R => R);
-				Route.extend(fn);
-				expect(fn).toHaveBeenCalledWith(Route);
-			});
+		it('extension function with Route', () => {
+			const fn = spy(R => R);
+			Route.extend(fn);
+			expect(fn).toHaveBeenCalledTimes(1);
+			expect(fn).toHaveBeenCalledWith(Route);
 		});
 
-		describe('multiple extension functions', () => {
-			it('once each', () => {
-				const fn1 = spy(R => R),
-					fn2 = spy(R => R),
-					fn3 = spy(R => R);
-				Route.extend(fn1, fn2, fn3);
-				expect(fn1).toHaveBeenCalledTimes(1);
-				expect(fn2).toHaveBeenCalledTimes(1);
-				expect(fn3).toHaveBeenCalledTimes(1);
-			});
+		it('multiple extension functions each with previous result', () => {
+			class R2 extends Route {}
+			class R3 extends R2 {}
 
-			it('with previous result', () => {
-				class R2 extends Route {}
-				class R3 extends R2 {}
+			const fn1 = spy(() => R2),
+				fn2 = spy(() => R3),
+				fn3 = spy(R => R);
+			Route.extend(fn1, fn2, fn3);
 
-				const fn1 = spy(() => R2),
-					fn2 = spy(() => R3),
-					fn3 = spy(R => R);
-				Route.extend(fn1, fn2, fn3);
-				expect(fn1).toHaveBeenCalledWith(Route);
-				expect(fn2).toHaveBeenCalledWith(R2);
-				expect(fn3).toHaveBeenCalledWith(R3);
-			});
+			expect(fn1).toHaveBeenCalledTimes(1);
+			expect(fn1).toHaveBeenCalledWith(Route);
+			expect(fn2).toHaveBeenCalledTimes(1);
+			expect(fn2).toHaveBeenCalledWith(R2);
+			expect(fn3).toHaveBeenCalledTimes(1);
+			expect(fn3).toHaveBeenCalledWith(R3);
 		});
 	});
 

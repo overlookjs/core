@@ -43,23 +43,14 @@ describe('Route class', () => { // eslint-disable-line jest/lowercase-name
 			expect(route.app).toBeUndefined();
 		});
 
-		describe('calls `.initProps()`', () => {
-			let fn, props;
-			beforeEach(() => {
-				class R2 extends Route {}
-				props = {};
-				fn = spy(() => props);
-				R2.prototype.initProps = fn;
-				new R2(props); // eslint-disable-line no-new
-			});
+		it('calls `.initProps` with props', () => {
+			class R2 extends Route {}
+			const props = {};
+			R2.prototype.initProps = spy(() => props);
+			const route = new R2(props);
 
-			it('once', () => {
-				expect(fn).toHaveBeenCalledTimes(1);
-			});
-
-			it('with props', () => {
-				expect(fn).toHaveBeenCalledWith(props);
-			});
+			expect(route.initProps).toHaveBeenCalledTimes(1);
+			expect(route.initProps).toHaveBeenCalledWith(props);
 		});
 
 		it('adds passed properties to route', () => {

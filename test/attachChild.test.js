@@ -36,6 +36,15 @@ describe('Route#attachChild()', () => { // eslint-disable-line jest/lowercase-na
 		expect(parent.children).toIncludeSameMembers([child]);
 	});
 
+	it('calls `.attachTo` on child with parent', () => {
+		const parent = new Route();
+		const child = new Route();
+		child.attachTo = spy();
+		parent.attachChild(child);
+		expect(child.attachTo).toHaveBeenCalledTimes(1);
+		expect(child.attachTo).toHaveBeenCalledWith(parent);
+	});
+
 	it('calls `.attachedTo` on child with parent', () => {
 		const parent = new Route();
 		const child = new Route();

@@ -1,5 +1,26 @@
 # Changelog
 
+## 0.4.0
+
+Breaking changes:
+
+* `.init` called explicitly not on route attachment
+* Rename route method `attachChildInPos` to `attachChildInPosition`
+
+Features:
+
+* Route `attachedTo` method
+
+Tests:
+
+* Simplify tests [refactor]
+* Overlook class tests reduce repetition [refactor]
+* Code comments
+
+Refactor:
+
+* Replace siblings props with symbols
+
 ## 0.3.0
 
 Breaking changes:

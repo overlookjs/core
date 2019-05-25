@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.5.0
+
+Breaking changes:
+
+* `.attachTo` method sets parent
+* Remove `.attachChildLast` + `.attachChildInPosition` methods
+
 ## 0.4.0
 
 Breaking changes:

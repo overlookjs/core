@@ -68,6 +68,36 @@ describe('Overlook class', () => { // eslint-disable-line jest/lowercase-name
 		});
 	});
 
+	describe('`.init()`', () => {
+		it('prototype method exists', () => {
+			expect(overlook.init).toBeFunction();
+		});
+
+		it('returns overlook instance for chaining', () => {
+			const ret = overlook.init();
+			expect(ret).toBe(overlook);
+		});
+
+		describe('calls `.init` on router', () => {
+			let router;
+			beforeEach(() => {
+				router = new Route();
+				router.init = spy();
+				overlook.attachRouter(router);
+				expect(router.init).not.toHaveBeenCalled();
+				overlook.init();
+			});
+
+			it('once', () => {
+				expect(router.init).toHaveBeenCalledTimes(1);
+			});
+
+			it('with overlook app', () => {
+				expect(router.init).toHaveBeenCalledWith(overlook);
+			});
+		});
+	});
+
 	describe('`.handle()`', () => {
 		it('prototype method exists', () => {
 			expect(overlook.handle).toBeFunction();

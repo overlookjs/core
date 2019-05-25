@@ -54,12 +54,40 @@ describe('Route#attachChild()', () => { // eslint-disable-line jest/lowercase-na
 		});
 	});
 
-	it('calls `.init()` on child', () => {
-		const parent = new Route();
-		const child = new Route();
-		child.init = spy();
-		parent.attachChild(child);
-		expect(child.init).toHaveBeenCalledTimes(1);
+	describe('during/after initialization', () => {
+		it('does not throw error if called in `.initRoute`', () => {
+			const parent = new Route();
+			const child = new Route();
+			parent.initRoute = function() {
+				this.attachChild(child);
+			};
+			parent.init();
+
+			// Check child attached
+			expect(child.parent).toBe(parent);
+		});
+
+		it('throws error if called in `.initChildren`', () => {
+			const parent = new Route();
+			const child = new Route();
+			parent.initChildren = function() {
+				this.attachChild(child);
+			};
+
+			expect(
+				() => parent.init()
+			).toThrowWithMessage(Error, 'Cannot attach children after initialization');
+		});
+
+		it('throws error if called after parent initialized', () => {
+			const parent = new Route();
+			parent.init();
+			const child = new Route();
+
+			expect(
+				() => parent.attachChild(child)
+			).toThrowWithMessage(Error, 'Cannot attach children after initialization');
+		});
 	});
 
 	describe('orders children according to `.isBefore()`', () => {

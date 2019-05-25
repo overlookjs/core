@@ -46,33 +46,32 @@ describe('Route#attachChild()', () => { // eslint-disable-line jest/lowercase-na
 	});
 
 	describe('during/after initialization', () => {
-		it('does not throw error if called in `.initRoute`', () => {
+		it('does not throw error if called in `.initRoute`', async () => {
 			const parent = new Route();
 			const child = new Route();
 			parent.initRoute = function() {
 				this.attachChild(child);
 			};
-			parent.init();
+			await parent.init();
 
 			// Check child attached
 			expect(child.parent).toBe(parent);
 		});
 
-		it('throws error if called in `.initChildren`', () => {
+		it('throws error if called in `.initChildren`', async () => {
 			const parent = new Route();
 			const child = new Route();
 			parent.initChildren = function() {
 				this.attachChild(child);
 			};
 
-			expect(
-				() => parent.init()
-			).toThrowWithMessage(Error, 'Cannot attach children after initialization');
+			const ret = parent.init();
+			await expect(ret).rejects.toThrow(new Error('Cannot attach children after initialization'));
 		});
 
-		it('throws error if called after parent initialized', () => {
+		it('throws error if called after parent initialized', async () => {
 			const parent = new Route();
-			parent.init();
+			await parent.init();
 			const child = new Route();
 
 			expect(
@@ -253,7 +252,7 @@ describe('Route#attachChild()', () => { // eslint-disable-line jest/lowercase-na
 				parent.attachChild(child1);
 				expect(() => {
 					parent.attachChild(child2);
-				}).toThrow(/^Child ordering conflict$/);
+				}).toThrowWithMessage(Error, 'Child ordering conflict');
 			});
 
 			it('circular conflict', () => {
@@ -265,7 +264,7 @@ describe('Route#attachChild()', () => { // eslint-disable-line jest/lowercase-na
 				parent.attachChild(child2);
 				expect(() => {
 					parent.attachChild(child3);
-				}).toThrow(/^Child ordering conflict$/);
+				}).toThrowWithMessage(Error, 'Child ordering conflict');
 			});
 		});
 	});

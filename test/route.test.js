@@ -70,34 +70,35 @@ describe('Route class', () => { // eslint-disable-line jest/lowercase-name
 			expect(route.init).toBeFunction();
 		});
 
-		it('returns undefined', () => {
+		it('returns Promise', async () => {
 			const ret = route.init();
-			expect(ret).toBeUndefined();
+			expect(ret).toBeInstanceOf(Promise);
+			await ret;
 		});
 
-		it('calls `.initRoute` with value passed to `.init`', () => {
+		it('calls `.initRoute` with value passed to `.init`', async () => {
 			route.initRoute = spy();
 			const app = {};
-			route.init(app);
+			await route.init(app);
 			expect(route.initRoute).toHaveBeenCalledTimes(1);
 			expect(route.initRoute).toHaveBeenCalledWith(app);
 		});
 
-		it('calls `.initChildren` with value passed to `.init`', () => {
+		it('calls `.initChildren` with value passed to `.init`', async () => {
 			route.initChildren = spy();
 			const app = {};
-			route.init(app);
+			await route.init(app);
 			expect(route.initChildren).toHaveBeenCalledTimes(1);
 			expect(route.initChildren).toHaveBeenCalledWith(app);
 		});
 
-		it('calls `.init` on children with value passed to `.init`', () => {
+		it('calls `.init` on children with value passed to `.init`', async () => {
 			const child = new Route();
 			child.init = spy();
 			route.attachChild(child);
 
 			const app = {};
-			route.init(app);
+			await route.init(app);
 			expect(child.init).toHaveBeenCalledTimes(1);
 			expect(child.init).toHaveBeenCalledWith(app);
 		});

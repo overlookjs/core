@@ -64,18 +64,19 @@ describe('Overlook class', () => { // eslint-disable-line jest/lowercase-name
 			expect(overlook.init).toBeFunction();
 		});
 
-		it('returns overlook instance for chaining', () => {
+		it('returns Promise', async () => {
 			const ret = overlook.init();
-			expect(ret).toBe(overlook);
+			expect(ret).toBeInstanceOf(Promise);
+			await ret;
 		});
 
-		it('calls `.init` on router with overlook app', () => {
+		it('calls `.init` on router with overlook app', async () => {
 			const router = new Route();
 			router.init = spy();
 			overlook.attachRouter(router);
 			expect(router.init).not.toHaveBeenCalled();
 
-			overlook.init();
+			await overlook.init();
 			expect(router.init).toHaveBeenCalledTimes(1);
 			expect(router.init).toHaveBeenCalledWith(overlook);
 		});

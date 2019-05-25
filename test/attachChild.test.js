@@ -225,8 +225,6 @@ describe('Route#attachChild()', () => { // eslint-disable-line jest/lowercase-na
 					expect(parent.children[3]).toBe(child3);
 				});
 			});
-
-			// TODO Write this!
 		});
 
 		describe('throws error if conflict', () => {

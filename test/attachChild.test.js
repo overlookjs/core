@@ -45,15 +45,6 @@ describe('Route#attachChild()', () => { // eslint-disable-line jest/lowercase-na
 		expect(child.attachTo).toHaveBeenCalledWith(parent);
 	});
 
-	it('calls `child.attachedTo()` with parent', () => {
-		const parent = new Route();
-		const child = new Route();
-		child.attachedTo = spy();
-		parent.attachChild(child);
-		expect(child.attachedTo).toHaveBeenCalledTimes(1);
-		expect(child.attachedTo).toHaveBeenCalledWith(parent);
-	});
-
 	describe('during/after initialization', () => {
 		it('does not throw error if called in `.initRoute`', () => {
 			const parent = new Route();

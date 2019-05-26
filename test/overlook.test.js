@@ -57,14 +57,6 @@ describe('Overlook class', () => { // eslint-disable-line jest/lowercase-name
 			expect(router.attachTo).toHaveBeenCalledTimes(1);
 			expect(router.attachTo).toHaveBeenCalledWith(null);
 		});
-
-		it('calls `router.attachedTo()` with null', () => {
-			const router = new Route();
-			router.attachedTo = spy();
-			overlook.attachRouter(router);
-			expect(router.attachedTo).toHaveBeenCalledTimes(1);
-			expect(router.attachedTo).toHaveBeenCalledWith(null);
-		});
 	});
 
 	describe('`.init()`', () => {

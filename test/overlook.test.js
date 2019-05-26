@@ -50,7 +50,7 @@ describe('Overlook class', () => { // eslint-disable-line jest/lowercase-name
 			expect(overlook.router).toBe(router);
 		});
 
-		it('calls `.attachTo` on router with null', () => {
+		it('calls `router.attachTo()` with null', () => {
 			const router = new Route();
 			router.attachTo = spy();
 			overlook.attachRouter(router);
@@ -58,7 +58,7 @@ describe('Overlook class', () => { // eslint-disable-line jest/lowercase-name
 			expect(router.attachTo).toHaveBeenCalledWith(null);
 		});
 
-		it('calls `.attachedTo` on router with null', () => {
+		it('calls `router.attachedTo()` with null', () => {
 			const router = new Route();
 			router.attachedTo = spy();
 			overlook.attachRouter(router);
@@ -77,7 +77,7 @@ describe('Overlook class', () => { // eslint-disable-line jest/lowercase-name
 			expect(ret).toBe(overlook);
 		});
 
-		it('calls `.init` on router with overlook app', () => {
+		it('calls `router.init()` with overlook app', () => {
 			const router = new Route();
 			router.init = spy();
 			overlook.attachRouter(router);

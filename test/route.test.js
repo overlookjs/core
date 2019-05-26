@@ -43,7 +43,7 @@ describe('Route class', () => { // eslint-disable-line jest/lowercase-name
 			expect(route.app).toBeUndefined();
 		});
 
-		it('calls `.initProps` with props', () => {
+		it('calls `.initProps()` with props', () => {
 			class R2 extends Route {}
 			const props = {};
 			R2.prototype.initProps = spy(() => props);
@@ -75,7 +75,7 @@ describe('Route class', () => { // eslint-disable-line jest/lowercase-name
 			expect(ret).toBeUndefined();
 		});
 
-		it('calls `.initRoute` with value passed to `.init`', () => {
+		it('calls `.initRoute()` with value passed to `.init()`', () => {
 			route.initRoute = spy();
 			const app = {};
 			route.init(app);
@@ -83,7 +83,7 @@ describe('Route class', () => { // eslint-disable-line jest/lowercase-name
 			expect(route.initRoute).toHaveBeenCalledWith(app);
 		});
 
-		it('calls `.initChildren` with value passed to `.init`', () => {
+		it('calls `.initChildren()` with value passed to `.init()`', () => {
 			route.initChildren = spy();
 			const app = {};
 			route.init(app);
@@ -91,7 +91,7 @@ describe('Route class', () => { // eslint-disable-line jest/lowercase-name
 			expect(route.initChildren).toHaveBeenCalledWith(app);
 		});
 
-		it('calls `.init` on children with value passed to `.init`', () => {
+		it('calls `.init()` on children with value passed to `.init()`', () => {
 			const child = new Route();
 			child.init = spy();
 			route.attachChild(child);

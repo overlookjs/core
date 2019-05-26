@@ -99,13 +99,15 @@ describe('Overlook class', () => { // eslint-disable-line jest/lowercase-name
 			expect(ret).toBeNull();
 		});
 
-		it('calls `router.handle()`', () => {
+		it('calls `router.handle() with request`', () => {
 			const router = new Route();
 			router.handle = spy();
 			overlook.attachRouter(router);
 
-			overlook.handle();
+			const req = {};
+			overlook.handle(req);
 			expect(router.handle).toHaveBeenCalledTimes(1);
+			expect(router.handle).toHaveBeenCalledWith(req);
 		});
 
 		it('returns result of `router.handle()`', () => {

@@ -1,5 +1,25 @@
 # Changelog
 
+## 0.6.0
+
+Breaking changes:
+
+* Remove route ordering functionality
+* Remove `.attachedTo` method
+
+Bug fixes:
+
+* Correct error messages
+
+Refactor:
+
+* Use `has-own-prop` module rather than util
+
+Tests:
+
+* `.handle` calls `router.handle` with request
+* Rename tests [refactor]
+
 ## 0.5.0
 
 Breaking changes:

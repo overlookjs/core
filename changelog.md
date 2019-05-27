@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.7.1
+
+Refactor:
+
+* Move `Route` class to `@overlook/route`
+
 ## 0.7.0
 
 Breaking changes:

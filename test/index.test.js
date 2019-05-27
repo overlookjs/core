@@ -27,6 +27,10 @@ describe('Overlook class', () => { // eslint-disable-line jest/lowercase-name
 		expect(Overlook).toBeFunction();
 	});
 
+	it('exports Route class', () => {
+		expect(Route).toBeFunction();
+	});
+
 	describe('constructor', () => {
 		it('initializes undefined parent', () => {
 			expect(overlook).toHaveProperty('router');

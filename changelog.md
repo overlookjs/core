@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.7.2
+
+Docs:
+
+* Fix missing Changelog entry
+
 ## 0.7.1
 
 Refactor:

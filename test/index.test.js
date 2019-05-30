@@ -32,7 +32,7 @@ describe('Overlook class', () => { // eslint-disable-line jest/lowercase-name
 	});
 
 	describe('constructor', () => {
-		it('initializes undefined parent', () => {
+		it('initializes undefined router', () => {
 			expect(overlook).toHaveProperty('router');
 			expect(overlook.router).toBeUndefined();
 		});

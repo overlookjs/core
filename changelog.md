@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.7.3
+
+Deps:
+
+* Update `@overlook/route` dependency
+
 ## 0.7.2
 
 Docs:

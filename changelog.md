@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.8.0
+
+Breaking changes:
+
+* Update `@overlook/route` dependency (includes breaking changes)
+
+Docs:
+
+* Document all features
+
 ## 0.7.3
 
 Deps:

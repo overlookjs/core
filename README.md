@@ -9,9 +9,56 @@
 
 Part of the [Overlook framework](https://overlookjs.github.io/).
 
+## Abstract
+
+[Overlook](https://overlookjs.github.io/) is a Javascript web framework.
+
+It is composed of many modules which can be used together to build a fully-featured app. This module is the (very minimal) core.
+
+This document only describes the methods of the core module. Please see other modules for documentation on each, or [overlookjs.github.io](https://overlookjs.github.io/) for an overview.
+
 ## Usage
 
-This module is under development and not ready for use yet.
+### Create app
+
+```js
+const Overlook = require('@overlook/core');
+const app = new Overlook();
+```
+
+### Routes
+
+The Route class defined by [@overlook/route](https://www.npmjs.com/package/@overlook/route) is exported as `Overlook.Route`.
+
+See the docs for Route class methods [here](https://www.npmjs.com/package/@overlook/route).
+
+#### `.attachRouter( router )`
+
+Attach a router to the app.
+
+```js
+const {Route} = Overlook;
+const router = new Route();
+overlook.attachRouter( router );
+```
+
+### Initialization
+
+#### `.init()`
+
+Initialize the app.
+
+This calls `.init()` on the router, passing the app as argument.
+
+See [here](https://www.npmjs.com/package/@overlook/route#initialization) for details of the router initializaton process.
+
+### Handling requests
+
+#### `.handle( req )`
+
+Handle request.
+
+This calls `.handle()` on the router, passing the request as argument.
 
 ## Tests
 

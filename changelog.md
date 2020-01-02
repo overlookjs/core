@@ -1,5 +1,26 @@
 # Changelog
 
+## 0.8.2
+
+No code:
+
+* NPM ignore `.DS_Store` files
+
+Tests:
+
+* Simplify unhandled rejection handling
+
+Dev:
+
+* Update dev dependencies
+* Reformat Jest config
+* Remove `sudo` from Travis CI config
+* ESLint ignore coverage dir
+
+Docs:
+
+* Update license year
+
 ## 0.8.1
 
 Dependencies:

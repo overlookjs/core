@@ -1,5 +1,22 @@
 # Changelog
 
+## 0.9.0
+
+Breaking changes:
+
+* Update `@overlook/route` dependency
+* Drop support for Node v8
+
+Dev:
+
+* Run tests on CI on Node v13
+* Update dev dependencies
+
+Docs:
+
+* Versioning policy
+* Fix minor formatting issue
+
 ## 0.8.2
 
 No code:

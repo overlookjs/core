@@ -37,7 +37,7 @@ See the docs for Route class methods [here](https://www.npmjs.com/package/@overl
 Attach a router to the app.
 
 ```js
-const {Route} = Overlook;
+const { Route } = Overlook;
 const router = new Route();
 overlook.attachRouter( router );
 ```

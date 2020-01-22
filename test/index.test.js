@@ -8,7 +8,8 @@
 
 // Modules
 const Overlook = require('../index'),
-	{Route} = Overlook;
+	{Route} = Overlook,
+	{ATTACH_TO} = Route;
 
 // Init
 require('./support');
@@ -54,12 +55,12 @@ describe('Overlook class', () => { // eslint-disable-line jest/lowercase-name
 			expect(overlook.router).toBe(router);
 		});
 
-		it('calls `router.attachTo()` with null', () => {
+		it('calls `router[ATTACH_TO]()` with null', () => {
 			const router = new Route();
-			router.attachTo = spy();
+			router[ATTACH_TO] = spy();
 			overlook.attachRouter(router);
-			expect(router.attachTo).toHaveBeenCalledTimes(1);
-			expect(router.attachTo).toHaveBeenCalledWith(null);
+			expect(router[ATTACH_TO]).toHaveBeenCalledTimes(1);
+			expect(router[ATTACH_TO]).toHaveBeenCalledWith(null);
 		});
 	});
 

@@ -39,7 +39,7 @@ Attach a router to the app.
 ```js
 const { Route } = Overlook;
 const router = new Route();
-overlook.attachRouter( router );
+app.attachRouter( router );
 ```
 
 ### Initialization

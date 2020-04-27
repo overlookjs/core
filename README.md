@@ -5,7 +5,11 @@
 [![Greenkeeper badge](https://badges.greenkeeper.io/overlookjs/core.svg)](https://greenkeeper.io/)
 [![Coverage Status](https://img.shields.io/coveralls/overlookjs/core/master.svg)](https://coveralls.io/r/overlookjs/core)
 
-# Overlook framework core
+# DEPRECATED: Overlook framework core
+
+This module is no longer required.
+
+[Routes](https://www.npmjs.com/package/@overlook/route) are now the fundamental building blocks of an Overlook app.
 
 Part of the [Overlook framework](https://overlookjs.github.io/).
 

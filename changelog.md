@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.10.0
+
+Docs:
+
+* Deprecation warning
+
 ## 0.9.0
 
 Breaking changes:
